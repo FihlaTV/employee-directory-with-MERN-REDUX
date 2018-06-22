@@ -12,19 +12,10 @@ const app = express();
 
 const port = process.env.PORT || 8000;
 
-// if(process.env.NODE_ENV === "production"){
-//         app.use(express.static('./client/public'));
-// }
-
-
 app.use(express.static('./client/build'));
 app.use(bodyParser.urlencoded({ extended: true}))
 app.use(bodyParser.json())
 app.use(cors());
-
-// app.get('/notes', (req, res) =>{
-       
-// });
 
 MongoClient.connect(db.url, (err, database) => {
         if (err) return console.log(err)
