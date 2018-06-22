@@ -76,7 +76,7 @@ module.exports = function(app, db){
     app.put('/Edit/:id',upload.single('avatar'), (req, res) => {
         const id = req.params.id;
         const details = {'_id': new ObjectID(id)};
-        const note = {details:{firstname: req.body.firstname, lastname: req.body.lastname, dob: req.body.dob
+        const note = {details:{orgID:req.body.orgID,firstname: req.body.firstname, lastname: req.body.lastname, dob: req.body.dob
             , gender: req.body.gender, department: req.body.department, role: req.body.role
             , phone: req.body.phone, email: req.body.email, address: req.body.address, imgpath:req.file.filename}};
         db.collection('notes').update(details, note, (err, item)=>{
