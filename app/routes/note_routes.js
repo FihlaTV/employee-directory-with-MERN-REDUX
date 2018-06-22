@@ -39,7 +39,7 @@ module.exports = {
 module.exports = function(app, db){
     
     //Handles Retrieve Employees
-    app.post('/notes', (req, res) => {
+    app.post('/Retrieve', (req, res) => {
         const id = req.body.orgID;
         const details = {'_id': new ObjectID(id)};
         db.collection('notes').find({}).toArray((err, item2)=>{
@@ -59,7 +59,7 @@ module.exports = function(app, db){
         });
 
     //Handles Delete Employee
-    app.delete('/notes/:id', (req, res) => {
+    app.delete('/Delete/:id', (req, res) => {
         const id = req.params.id;
         const details = {'_id': new ObjectID(id)};
         db.collection('notes').remove(details, (err, item)=>{
@@ -73,7 +73,7 @@ module.exports = function(app, db){
     });
 
     //Handles Edit Employee
-    app.put('/notes/:id',upload.single('avatar'), (req, res) => {
+    app.put('/Edit/:id',upload.single('avatar'), (req, res) => {
         const id = req.params.id;
         const details = {'_id': new ObjectID(id)};
         const note = {details:{firstname: req.body.firstname, lastname: req.body.lastname, dob: req.body.dob
